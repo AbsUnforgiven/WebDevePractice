@@ -10,12 +10,7 @@
   <video
     id="my-video"
     class="video-js vjs-big-play-centered"
-    controls
-    preload="auto"
-    width="500%"
-    height="500%"
-    poster="https://i.ytimg.com/vi/iAiQ6lvF4m4/maxresdefault.jpg"
-    data-setup="{}"
+    
   >
     <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
     <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/webm" />
@@ -31,7 +26,8 @@
   </video>
 
   <script src="https://vjs.zencdn.net/7.8.2/video.js"></script>
-  <!--<script type="text/javascript" src="video-player.js"></script>-->
+  <script src="https://cdn.sc.gl/videojs-hotkeys/0.2/videojs.hotkeys.min.js"></script>
+  <script type="text/javascript" src="video-player.js"></script>
 </body>
    <!-- If you want to control the video with JavaScript console (Ctrl + Shift + J in the browser), then write down this line:
    var myVideo = videojs('my-video');
