@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ArtPlayer</title>
+        <meta charset="UTF-8" />
+		<script src="E:/GitHub/ArtPlayer/dist/artplayer.js"></script>
+		<script src="E:/GitHub/ArtPlayer/dist/artplayer-plugin-danmuku.js"></script>
+    </head>
+    <body>
+        <div class="artplayer-app" style="width:800px;height:600px">
+		<p>'Hello world'</p>
+		</div>
+        <!--<script src=""https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js""></script>-->
+        <script>
+            var art = new Artplayer({
+                container: '.artplayer-app',
+                <!--url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',-->
+				url: 'https://artplayer.org/assets/sample/video.mp4',
+				title: 'Test video',
+				subtitle: {
+                  url: 'https://artplayer.org/assets/sample/subtitle.srt',
+				  style: {},
+                },
+				subtitleOffset: true,
+				volume: 0.6,
+				muted: false,
+				autoplay: false,
+				autoSize: true,
+				autoMin: true,
+				playbackRate: true,
+				aspectRatio: true,
+				setting: true,
+				pip: true,
+				fullscreen: true,
+				mutex: true,
+				hotkey: true,
+				localSubtitle: true,
+                plugins: [artplayerPluginDanmuku({
+                              danmuku: 'https://artplayer.org/assets/sample/danmuku.xml',
+                              speed: 5,
+                              maxlength: 50,
+                              margin: [10, 100],
+                              opacity: 1,
+                              fontSize: 25,
+                              synchronousPlayback: false,
+                          }),
+				],
+                controls: [
+                    {
+                        position: 'right',
+                        html: 'Hide',
+                        click: function () {
+                            art.plugins.artplayerPluginDanmuku.hide();
+                        },
+                    },
+                    {
+                        position: 'right',
+                        html: 'Show',
+                        click: function () {
+                            art.plugins.artplayerPluginDanmuku.show();
+                        },
+                    },
+                    {
+                        position: 'right',
+                        html: 'Send',
+                        click: function () {
+                            var text = prompt('Please enter', 'Danmu text');
+                            if (!text || !text.trim()) return;
+                            var color = '#' + Math.floor(Math.random() * 0xffffff).toString(16);
+                            art.plugins.artplayerPluginDanmuku.emit({
+                                text: text,
+                                color: color,
+                                border: true,
+                            });
+                        },
+                    },
+                ],
+				thumbnails: {
+                  url: 'https://artplayer.org/assets/sample/thumbnails.png',
+                  number: 50,
+                  width: 160,
+                  height: 90,
+                  column: 5,
+                },
+                
+				/*quality: [
+                    {
+                        default: true,
+                        name: 'SD 480P',
+                        url: '/assets/sample/video.mp4',
+                    },
+                    {
+                        name: 'HD 720P',
+                        url: '/assets/sample/video.mp4',
+                    },
+                ],*/
+				    
+	                			
+				});
+				
+				
+        </script>
+		
+		<div style="width:500px;height:500px">
+		<p>'Hello world'</p>
+		<script >
+		console.log("hhh");
+		</script>
+		</div>
+    </body>
+</html>

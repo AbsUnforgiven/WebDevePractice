@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ArtPlayer</title>
+        <meta charset="UTF-8" />
+		<script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+		<script src="artplayer-plugin-danmuku.js"></script>
+    </head>
+    <body>
+        <div class="artplayer-app" style="width:800px;height:600px">
+		<p>'Hello world'</p>
+		</div>
+        <!--<script src=""https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js""></script>-->
+        <script>
+            var art = new Artplayer({
+                container: '.artplayer-app',
+                <!--url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',-->
+				url: 'https://artplayer.org/assets/sample/video.mp4',
+				title: 'Test video',
+				subtitle: {
+                  url: 'https://artplayer.org/assets/sample/subtitle.srt',
+				  style: {},
+                },
+				subtitleOffset: true,
+				volume: 0.6,
+				muted: false,
+				autoplay: false,
+				autoSize: true,
+				autoMin: true,
+				playbackRate: true,
+				aspectRatio: true,
+				setting: true,
+				pip: true,
+				fullscreen: true,
+				mutex: true,
+				hotkey: true,
+				localSubtitle: true,
+                controls: [
+                    {
+                        name: 'preview',
+                        position: 'right',
+                        html: 'OPEN SUBTITLE',
+                        mounted: ($preview) => {
+                            art.plugins.localSubtitle.attach($preview);
+                        },
+                    },
+                ],
+				thumbnails: {
+                  url: 'https://artplayer.org/assets/sample/thumbnails.png',
+                  number: 50,
+                  width: 160,
+                  height: 90,
+                  column: 5,
+                },
+				plugins: [artplayerPluginDanmuku({
+        danmuku: [
+            {
+                text: '666', // Danmu text
+                time: 5, // Video time
+                color: '#fff', // Danmu color
+                border: false, // Danmu border
+                mode: 'scroll', // Danmu mode: scroll or static
+            }
+        ], // Can be an array or return the promised function or danmuku xml url
+        speed: 5, // Animation time
+        opacity: 1, // Opacity
+        color: '#fff', // Font color
+        size: 25, // Font size
+        maxlength: 50, // The maximum number of words in the danmu
+        margin: [10, 20], // Margin top and margin bottom
+        synchronousPlayback: false, // Synchronous playback speed
+    })],
+});
+                
+				/*quality: [
+                    {
+                        default: true,
+                        name: 'SD 480P',
+                        url: '/assets/sample/video.mp4',
+                    },
+                    {
+                        name: 'HD 720P',
+                        url: '/assets/sample/video.mp4',
+                    },
+                ],*/
+				    
+	                			
+				});
+				
+				
+        </script>
+		
+		<div style="width:500px;height:500px">
+		<p>'Hello world'</p>
+		<script >
+		console.log("hhh");
+		</script>
+		</div>
+    </body>
+</html>
